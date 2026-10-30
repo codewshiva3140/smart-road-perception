@@ -1,0 +1,18 @@
+"""
+Lane, Vehicle and Drivable Area Detection for Smart Roads  (v2)
+Pretrained pipeline: YOLOv8 (vehicles) + SegFormer-Cityscapes (drivable area) + OpenCV (lanes)
+
+Install (Colab):
+    pip install ultralytics transformers opencv-python
+
+Run:
+    python pipeline.py --input road.mp4 --output result.mp4
+Faster:
+    python pipeline.py --input road.mp4 --output result.mp4 --width 1280 --skip 2
+
+What's new in v2:
+  --width N   shrink frames to N pixels wide before processing (default 1280)
+  --skip K    run YOLO + SegFormer every K-th frame and reuse results in between
+  Lane detector now looks for bright paint (top-hat filter) instead of any edge,
+  only inside the drivable area, ignores vehicles, and rejects crossing lines.
+"""
